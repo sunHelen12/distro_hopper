@@ -1,0 +1,136 @@
+{
+    "distros": [
+        {
+            "id": 1,
+            "nome": "Ubuntu",
+            "descricao": "Uma das distribuições mais populares do mundo, mantida pela Canonical. Tem lançamentos a cada seis meses e versões LTS com cinco anos de suporte. É uma ótima porta de entrada para quem está começando no Linux.",
+            "base": "Debian",
+            "ambiente": "GNOME",
+            "ano": 2004,
+            "site": "https://ubuntu.com/",
+            "logo": "ubuntu.png",
+            "imagens": ["ubuntu0.png", "ubuntu1.png"]
+        },
+        {
+            "id": 2,
+            "nome": "Debian",
+            "descricao": "Um dos projetos mais antigos e respeitados do Linux, mantido por uma comunidade de voluntários. Conhecida pela estabilidade e pelo enorme repositório de pacotes. Serve de base para muitas outras distros.",
+            "base": "Independente",
+            "ambiente": "GNOME",
+            "ano": 1993,
+            "site": "https://www.debian.org/",
+            "logo": "debian.png",
+            "imagens": ["debian0.png", "debian1.png"]
+        },
+        {
+            "id": 3,
+            "nome": "Fedora",
+            "descricao": "Distribuição apoiada pela Red Hat, que traz as tecnologias mais recentes do ecossistema Linux. Tem lançamentos frequentes e foco em software livre. Muito usada por desenvolvedores.",
+            "base": "Independente",
+            "ambiente": "GNOME",
+            "ano": 2003,
+            "site": "https://fedoraproject.org/",
+            "logo": "fedora.png",
+            "imagens": ["fedora0.png", "fedora1.png"]
+        },
+        {
+            "id": 4,
+            "nome": "Linux Mint",
+            "descricao": "Feita para ser simples, estável e familiar a quem vem do Windows. Vem com codecs multimídia prontos para uso e o ambiente Cinnamon, leve e fácil de personalizar.",
+            "base": "Ubuntu",
+            "ambiente": "Cinnamon, Xfce, MATE",
+            "ano": 2006,
+            "site": "https://linuxmint.com/",
+            "logo": "mint.png",
+            "imagens": ["mint0.png", "mint1.png"]
+        },
+        {
+            "id": 5,
+            "nome": "Arch Linux",
+            "descricao": "Distribuição minimalista de lançamento contínuo (rolling release), em que o usuário monta o sistema do zero. Tem uma documentação (Arch Wiki) referência para todo o mundo Linux.",
+            "base": "Independente",
+            "ambiente": "O usuário escolhe",
+            "ano": 2002,
+            "site": "https://archlinux.org/",
+            "logo": "arch.png",
+            "imagens": ["arch0.png", "arch1.png"]
+        },
+        {
+            "id": 6,
+            "nome": "Manjaro",
+            "descricao": "Baseada no Arch, mas com instalador gráfico e configuração pronta para uso. Une a atualização contínua do Arch com um caminho bem mais fácil de instalação.",
+            "base": "Arch Linux",
+            "ambiente": "KDE Plasma",
+            "ano": 2011,
+            "site": "https://manjaro.org/",
+            "logo": "manjaro.png",
+            "imagens": ["manjaro0.png", "manjaro1.png"]
+        },
+        {
+            "id": 7,
+            "nome": "openSUSE",
+            "descricao": "Distribuição de origem alemã, com duas versões principais: Leap, estável, e Tumbleweed, de lançamento contínuo. Destaca-se pela ferramenta de configuração YaST e pelo sistema de arquivos Btrfs com snapshots.",
+            "base": "Independente",
+            "ambiente": "KDE Plasma",
+            "ano": 2005,
+            "site": "https://www.opensuse.org/",
+            "logo": "opensuse.png",
+            "imagens": ["opensuse0.png", "opensuse1.png"]
+        },
+        {
+            "id": 8,
+            "nome": "Pop!_OS",
+            "descricao": "Criada pela System76, com foco em desenvolvedores, criadores e jogadores. Tem bom suporte a placas NVIDIA e recursos de organização de janelas em mosaico.",
+            "base": "Ubuntu",
+            "ambiente": "COSMIC",
+            "ano": 2017,
+            "site": "https://system76.com/pop/",
+            "logo": "popos.png",
+            "imagens": ["popos0.png", "popos1.png"]
+        },
+        {
+            "id": 9,
+            "nome": "elementary OS",
+            "descricao": "Distribuição com visual limpo e cuidadoso, inspirado no macOS. Usa o ambiente Pantheon e prioriza simplicidade e consistência no design dos aplicativos.",
+            "base": "Ubuntu",
+            "ambiente": "Pantheon",
+            "ano": 2011,
+            "site": "https://elementary.io/",
+            "logo": "elementary.png",
+            "imagens": ["elementary0.png", "elementary1.png"]
+        },
+        {
+            "id": 10,
+            "nome": "Zorin OS",
+            "descricao": "Pensada para facilitar a migração de usuários do Windows e do macOS, com layouts que imitam esses sistemas. Tem visual moderno e funciona bem em computadores mais antigos.",
+            "base": "Ubuntu",
+            "ambiente": "GNOME (personalizado)",
+            "ano": 2009,
+            "site": "https://zorin.com/os/",
+            "logo": "zorin.png",
+            "imagens": ["zorin0.png", "zorin1.png"]
+        },
+        {
+            "id": 11,
+            "nome": "Kali Linux",
+            "descricao": "Distribuição voltada para segurança da informação e testes de invasão (pentest), mantida pela Offensive Security. Já vem com centenas de ferramentas de análise e auditoria.",
+            "base": "Debian",
+            "ambiente": "Xfce",
+            "ano": 2013,
+            "site": "https://www.kali.org/",
+            "logo": "kali.png",
+            "imagens": ["kali0.png", "kali1.png"]
+        },
+        {
+            "id": 12,
+            "nome": "NixOS",
+            "descricao": "Distribuição que usa configuração declarativa: o sistema inteiro é descrito em arquivos e pode ser reproduzido ou revertido com facilidade. Tem uma curva de aprendizado diferente das demais.",
+            "base": "Independente",
+            "ambiente": "GNOME",
+            "ano": 2003,
+            "site": "https://nixos.org/",
+            "logo": "nixos.png",
+            "imagens": ["nixos0.png", "nixos1.png"]
+        }
+    ]
+}
