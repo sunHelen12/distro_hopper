@@ -24,6 +24,6 @@ flutter:
 
   assets:
   - recursos/jsons/    
-  - recursos/imagens/
+  - recursos/imagens
   - recursos/imagens/logos
 

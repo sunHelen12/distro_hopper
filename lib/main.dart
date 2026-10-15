@@ -1,66 +1,52 @@
+import 'package:distro_hopper/gerenciador_estado.dart';
+import 'package:distro_hopper/tema.dart';
+import 'package:distro_hopper/telas/detalhes.dart';
+import 'package:distro_hopper/telas/distros.dart';
+import 'package:distro_hopper/telas/meus_testes.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const DistroHopper());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
- 
+class DistroHopper extends StatelessWidget {
+  const DistroHopper({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(       
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+    return ChangeNotifierProvider(
+      create: (_) => GerenciadorEstado()..carregarDados(),
+      child: MaterialApp(
+        title: 'Distro Hopper',
+        debugShowCheckedModeBanner: false,
+        theme: tema,
+        home: const TelaPrincipal(),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+class TelaPrincipal extends StatelessWidget {
+  const TelaPrincipal({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
+  Widget build(BuildContext context) {
+    estadoApp = context.watch<GerenciadorEstado>();
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+    if (estadoApp.carregando) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
 
-  void _incrementCounter() {
-    setState(() {   
-      _counter++;
-    });
-  }
+    Widget tela = const SizedBox.shrink();
+    if (estadoApp.exibicao == EmExibicao.telaDistros) {
+      tela = const Distros();
+    } else if (estadoApp.exibicao == EmExibicao.telaDetalhes) {
+      tela = const Detalhes();
+    } else if (estadoApp.exibicao == EmExibicao.telaMeusTestes) {
+      tela = const MeusTestes();
+    }
 
-  @override
-  Widget build(BuildContext context) {  
-    return Scaffold(
-      appBar: AppBar(       
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,       
-        title: Text(widget.title),
-      ),
-      body: Center(       
-        child: Column(        
-          mainAxisAlignment: .center,
-          children: [
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-    );
+    return tela;
   }
 }

@@ -17,8 +17,9 @@ class LogoTux extends StatelessWidget {
 
 class BarraApp extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget> acoes;
+  final VoidCallback? aoVoltar; 
 
-  const BarraApp({super.key, this.acoes = const []});
+  const BarraApp({super.key, this.acoes = const [], this.aoVoltar});
 
   @override
   Size get preferredSize => const Size.fromHeight(64);
@@ -27,6 +28,12 @@ class BarraApp extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       toolbarHeight: 64,
+      leading: aoVoltar == null
+          ? null
+          : IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: aoVoltar,
+            ),
       title: Row(
         children: [
           const LogoTux(tamanho: 40),
