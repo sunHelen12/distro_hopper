@@ -79,7 +79,7 @@ flutter run -d <id>
 - **Desktop Linux:** `flutter run -d linux`
 - **Navegador:** `flutter run -d chrome`
 
-"No vídeo, o app foi executado no emulador Android (Medium Phone) com `flutter run`."]
+"No vídeo, o app foi executado no emulador Android (Medium Phone) com `flutter run`."
 
 ## Observações
 
