@@ -40,11 +40,11 @@ class TelaPrincipal extends StatelessWidget {
 
     Widget tela = const SizedBox.shrink();
     if (estadoApp.exibicao == EmExibicao.telaDistros) {
-      tela = const Distros();
+      tela = Distros();
     } else if (estadoApp.exibicao == EmExibicao.telaDetalhes) {
-      tela = const Detalhes();
+      tela = Detalhes();
     } else if (estadoApp.exibicao == EmExibicao.telaMeusTestes) {
-      tela = const MeusTestes();
+      tela = MeusTestes();
     }
 
     return tela;
