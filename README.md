@@ -10,6 +10,28 @@ No mundo Linux, **distro hopping** é o hábito de ficar trocando de distribuiç
 
 Como quem testa muitas distros costuma esquecer o que achou de cada uma, o app funciona como um **diário desse caminho**: registra por onde a pessoa já passou, com nota, comentário, ambiente gráfico e versão. O mascote do app é o **Tux**, o pinguim do Linux, e as cores do tema vêm dele (preto, branco e laranja).
 
+## Capturas de tela
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="assets/distro_hopper1.png" width="220" alt="Captura de tela 1"><br><br>
+      <img src="assets/distro_hopper2.png" width="220" alt="Captura de tela 2"><br><br>
+      <img src="assets/distro_hopper3.png" width="220" alt="Captura de tela 3">
+    </td>
+    <td align="center">
+      <img src="assets/distro_hopper4.png" width="220" alt="Captura de tela 4"><br><br>
+      <img src="assets/distro_hopper5.png" width="220" alt="Captura de tela 5"><br><br>
+      <img src="assets/distro_hopper6.png" width="220" alt="Captura de tela 6">
+    </td>
+  </tr>
+</table>
+
+## Sobre o app
+
+- **Sem login (visitante):** navega pela lista de distros, pesquisa pelo nome e vê os detalhes de cada uma.
+- **Com login (mockado):** marca distros como testadas, avalia (1 a 5 estrelas), escreve comentários, informa ambiente gráfico e versão, e acessa a tela **Meus testes**. Uma mesma distro pode ter vários testes.
+
 ### Contas fictícias
 
 O login é simulado (sem servidor). Ao tocar em **Entrar**, escolha uma das contas:
@@ -58,7 +80,7 @@ recursos/
 ### Pré-requisitos
 
 - Flutter instalado (o projeto usa o SDK definido em `pubspec.yaml`)
-- Versão usada no desenvolvimento: [COLE AQUI A SAÍDA RESUMIDA DE `flutter --version`]
+- Versão usada no desenvolvimento: Flutter 3.47.2 (canal stable) com Dart 3.13.2
 
 ### Passos
 
@@ -72,14 +94,38 @@ flutter run
 O `flutter run` usa o dispositivo disponível. Para escolher onde rodar:
 
 ```bash
-flutter devices         
-flutter run -d <id>      
+flutter devices
+flutter run -d <id>
+```
 
 - **Emulador Android:** inicie o emulador e rode `flutter run`.
 - **Desktop Linux:** `flutter run -d linux`
 - **Navegador:** `flutter run -d chrome`
 
-"No vídeo, o app foi executado no emulador Android (Medium Phone) com `flutter run`."
+### Como o app foi executado no vídeo
+
+O app foi executado no **emulador Android (Medium Phone)**, **sem usar o Android Studio**: o Android SDK e o emulador foram usados apenas pela linha de comando (terminal), em Linux.
+
+Comandos usados para iniciar o emulador e rodar o app:
+
+```bash
+# deixa o adb e o emulador acessíveis no terminal
+export PATH="$PATH:$HOME/Android/Sdk/platform-tools:$HOME/Android/Sdk/emulator"
+
+# reinicia o servidor do adb
+adb kill-server
+adb start-server
+
+# lista e inicia o emulador (boot a frio)
+flutter emulators
+flutter emulators --launch <id_do_emulador> --cold
+
+# confirma que o emulador aparece como "device" e roda o app
+adb devices
+flutter run
+```
+
+Quem preferir o Android Studio pode abrir a pasta do projeto, executar **Pub get**, escolher um emulador e rodar o `lib/main.dart`. É o mesmo processo, só que pela interface.
 
 ## Observações
 
