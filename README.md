@@ -14,16 +14,14 @@ Como quem testa muitas distros costuma esquecer o que achou de cada uma, o app f
 
 <table>
   <tr>
-    <td align="center">
-      <img src="assets/distro_hopper1.png" width="220" alt="Captura de tela 1"><br><br>
-      <img src="assets/distro_hopper2.png" width="220" alt="Captura de tela 2"><br><br>
-      <img src="assets/distro_hopper3.png" width="220" alt="Captura de tela 3">
-    </td>
-    <td align="center">
-      <img src="assets/distro_hopper4.png" width="220" alt="Captura de tela 4"><br><br>
-      <img src="assets/distro_hopper5.png" width="220" alt="Captura de tela 5"><br><br>
-      <img src="assets/distro_hopper6.png" width="220" alt="Captura de tela 6">
-    </td>
+    <td align="center"><img src="assets/distro_hopper1.png" width="200" alt="Captura de tela 1"></td>
+    <td align="center"><img src="assets/distro_hopper2.png" width="200" alt="Captura de tela 2"></td>
+    <td align="center"><img src="assets/distro_hopper3.png" width="200" alt="Captura de tela 3"></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/distro_hopper4.png" width="200" alt="Captura de tela 4"></td>
+    <td align="center"><img src="assets/distro_hopper5.png" width="200" alt="Captura de tela 5"></td>
+    <td align="center"><img src="assets/distro_hopper6.png" width="200" alt="Captura de tela 6"></td>
   </tr>
 </table>
 
