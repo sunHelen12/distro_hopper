@@ -40,12 +40,21 @@ class MeusTestes extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
-                    child: Text(
-                      'Meus testes (${testes.length})',
-                      style: const TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Meus testes (${testes.length})',
+                          style: const TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          'Conta: ${estadoApp.usuario?.nome ?? ''}',
+                          style: const TextStyle(color: CoresTux.cinza),
+                        ),
+                      ],
                     ),
                   ),
                   for (final teste in testes)

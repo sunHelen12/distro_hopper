@@ -1,9 +1,31 @@
 import 'package:distro_hopper/autenticador.dart';
 import 'package:distro_hopper/gerenciador_estado.dart';
+import 'package:distro_hopper/usuario.dart';
 import 'package:flutter/material.dart';
 
-Future<void> entrar() async {
-  final usuario = await Autenticador.login();
+Future<Usuario?> escolherConta(BuildContext context) {
+  return showDialog<Usuario>(
+    context: context,
+    builder: (contexto) => SimpleDialog(
+      title: const Text('Escolha uma conta'),
+      children: [
+        for (final conta in Autenticador.contas)
+          SimpleDialogOption(
+            onPressed: () => Navigator.pop(contexto, conta),
+            child: ListTile(
+              contentPadding: EdgeInsets.zero,
+              leading: CircleAvatar(child: Text(conta.nome[0])),
+              title: Text(conta.nome),
+              subtitle: Text(conta.email),
+            ),
+          ),
+      ],
+    ),
+  );
+}
+
+Future<void> entrarCom(Usuario conta) async {
+  final usuario = await Autenticador.login(conta);
   estadoApp.login(usuario);
 }
 
@@ -27,8 +49,13 @@ class _ControlesUsuarioState extends State<ControlesUsuario> {
   Future<void> _executar(Future<void> Function() acao) async {
     setState(() => _ocupado = true);
     await acao();
-    // a tela pode ter mudado durante o logout
     if (mounted) setState(() => _ocupado = false);
+  }
+
+  Future<void> _entrar() async {
+    final conta = await escolherConta(context);
+    if (conta == null || !mounted) return;
+    await _executar(() => entrarCom(conta));
   }
 
   @override
@@ -46,7 +73,7 @@ class _ControlesUsuarioState extends State<ControlesUsuario> {
 
     if (!estadoApp.logado) {
       return TextButton.icon(
-        onPressed: () => _executar(entrar),
+        onPressed: _entrar,
         icon: const Icon(Icons.login),
         label: const Text('Entrar'),
       );
@@ -62,7 +89,7 @@ class _ControlesUsuarioState extends State<ControlesUsuario> {
             onPressed: estadoApp.exibirMeusTestes,
           ),
         IconButton(
-          tooltip: 'Sair',
+          tooltip: 'Sair (${estadoApp.usuario?.nome ?? ''})',
           icon: const Icon(Icons.logout),
           onPressed: () => _executar(sair),
         ),

@@ -6,7 +6,6 @@ import 'package:distro_hopper/modelos/teste.dart';
 import 'package:distro_hopper/tema.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
 class FormularioTeste extends StatefulWidget {
   final Distro distro;
 
@@ -80,7 +79,10 @@ class _FormularioTesteState extends State<FormularioTeste> {
               ),
               const SizedBox(height: 12),
               ElevatedButton.icon(
-                onPressed: entrar,
+                onPressed: () async {
+                  final conta = await escolherConta(context);
+                  if (conta != null) await entrarCom(conta);
+                },
                 icon: const Icon(Icons.login),
                 label: const Text('Entrar'),
               ),

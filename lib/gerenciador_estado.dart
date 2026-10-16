@@ -20,7 +20,8 @@ class GerenciadorEstado extends ChangeNotifier {
   List<Distro> get distros => _distros;
 
   List<Teste> _testes = [];
-  List<Teste> get testes => _testes;
+  List<Teste> get testes =>
+      _testes.where((t) => t.emailUsuario == _usuario?.email).toList();
 
   Usuario? _usuario;
   Usuario? get usuario => _usuario;
@@ -48,7 +49,7 @@ class GerenciadorEstado extends ChangeNotifier {
   }
 
   void exibirMeusTestes() {
-    if (!logado) return;
+    if (!logado) return; 
 
     _exibicao = EmExibicao.telaMeusTestes;
 
@@ -81,7 +82,7 @@ class GerenciadorEstado extends ChangeNotifier {
   Distro? get distroSelecionada => distroPorId(_idDistro);
 
   List<Teste> testesDaDistro(int idDistro) {
-    final lista = _testes.where((t) => t.idDistro == idDistro).toList();
+    final lista = testes.where((t) => t.idDistro == idDistro).toList();
     lista.sort((a, b) => b.data.compareTo(a.data));
     return lista;
   }
@@ -100,6 +101,7 @@ class GerenciadorEstado extends ChangeNotifier {
       Teste(
         id: _proximoId(),
         idDistro: idDistro,
+        emailUsuario: _usuario!.email,
         nota: 0,
         comentario: '',
         ambiente: '',
@@ -121,13 +123,18 @@ class GerenciadorEstado extends ChangeNotifier {
     if (!logado) return;
 
     _testes.removeWhere(
-      (t) => t.idDistro == idDistro && t.nota == 0 && t.comentario.isEmpty,
+      (t) =>
+          t.emailUsuario == _usuario!.email &&
+          t.idDistro == idDistro &&
+          t.nota == 0 &&
+          t.comentario.isEmpty,
     );
 
     _testes.add(
       Teste(
         id: _proximoId(),
         idDistro: idDistro,
+        emailUsuario: _usuario!.email,
         nota: nota,
         comentario: comentario,
         ambiente: ambiente,
@@ -142,7 +149,9 @@ class GerenciadorEstado extends ChangeNotifier {
   void removerTeste(int idTeste) {
     if (!logado) return;
 
-    _testes.removeWhere((teste) => teste.id == idTeste);
+    _testes.removeWhere(
+      (teste) => teste.id == idTeste && teste.emailUsuario == _usuario!.email,
+    );
 
     notifyListeners();
   }

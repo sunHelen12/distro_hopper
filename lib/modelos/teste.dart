@@ -1,6 +1,7 @@
 class Teste {
   final int id;
   final int idDistro;
+  final String emailUsuario; 
   final int nota; 
   final String comentario;
   final String ambiente; 
@@ -10,6 +11,7 @@ class Teste {
   const Teste({
     required this.id,
     required this.idDistro,
+    required this.emailUsuario,
     required this.nota,
     required this.comentario,
     required this.ambiente,
@@ -21,6 +23,7 @@ class Teste {
     return Teste(
       id: json['id'],
       idDistro: json['idDistro'],
+      emailUsuario: json['usuario'] ?? '',
       nota: json['nota'],
       comentario: json['comentario'],
       ambiente: json['ambiente'] ?? '',
