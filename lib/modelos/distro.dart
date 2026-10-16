@@ -3,7 +3,6 @@ class Distro {
   final String nome;
   final String descricao;
   final String base;
-  final String ambiente;
   final int ano;
   final String site;
   final String logo;
@@ -14,7 +13,6 @@ class Distro {
     required this.nome,
     required this.descricao,
     required this.base,
-    required this.ambiente,
     required this.ano,
     required this.site,
     required this.logo,
@@ -27,7 +25,6 @@ class Distro {
       nome: json['nome'],
       descricao: json['descricao'],
       base: json['base'],
-      ambiente: json['ambiente'],
       ano: json['ano'],
       site: json['site'],
       logo: json['logo'],

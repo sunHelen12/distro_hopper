@@ -48,7 +48,7 @@ class GerenciadorEstado extends ChangeNotifier {
   }
 
   void exibirMeusTestes() {
-    if (!logado) return; 
+    if (!logado) return;
 
     _exibicao = EmExibicao.telaMeusTestes;
 
@@ -80,11 +80,15 @@ class GerenciadorEstado extends ChangeNotifier {
 
   Distro? get distroSelecionada => distroPorId(_idDistro);
 
+  List<Teste> testesDaDistro(int idDistro) {
+    final lista = _testes.where((t) => t.idDistro == idDistro).toList();
+    lista.sort((a, b) => b.data.compareTo(a.data));
+    return lista;
+  }
+
   Teste? testeDaDistro(int idDistro) {
-    for (final teste in _testes) {
-      if (teste.idDistro == idDistro) return teste;
-    }
-    return null;
+    final lista = testesDaDistro(idDistro);
+    return lista.isEmpty ? null : lista.first;
   }
 
   bool foiTestada(int idDistro) => testeDaDistro(idDistro) != null;
@@ -98,6 +102,8 @@ class GerenciadorEstado extends ChangeNotifier {
         idDistro: idDistro,
         nota: 0,
         comentario: '',
+        ambiente: '',
+        versao: '',
         data: DateTime.now(),
       ),
     );
@@ -105,31 +111,38 @@ class GerenciadorEstado extends ChangeNotifier {
     notifyListeners();
   }
 
-  void avaliar(int idDistro, int nota, String comentario) {
+  void avaliar(
+    int idDistro,
+    int nota,
+    String comentario, {
+    String ambiente = '',
+    String versao = '',
+  }) {
     if (!logado) return;
 
-    final existente = testeDaDistro(idDistro);
-    final novo = Teste(
-      id: existente?.id ?? _proximoId(),
-      idDistro: idDistro,
-      nota: nota,
-      comentario: comentario,
-      data: DateTime.now(),
+    _testes.removeWhere(
+      (t) => t.idDistro == idDistro && t.nota == 0 && t.comentario.isEmpty,
     );
 
-    if (existente == null) {
-      _testes.add(novo);
-    } else {
-      _testes[_testes.indexOf(existente)] = novo;
-    }
+    _testes.add(
+      Teste(
+        id: _proximoId(),
+        idDistro: idDistro,
+        nota: nota,
+        comentario: comentario,
+        ambiente: ambiente,
+        versao: versao,
+        data: DateTime.now(),
+      ),
+    );
 
     notifyListeners();
   }
 
-  void removerTeste(int idDistro) {
+  void removerTeste(int idTeste) {
     if (!logado) return;
 
-    _testes.removeWhere((teste) => teste.idDistro == idDistro);
+    _testes.removeWhere((teste) => teste.id == idTeste);
 
     notifyListeners();
   }

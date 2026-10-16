@@ -1,5 +1,7 @@
 import 'package:distro_hopper/componentes/barra_app.dart';
 import 'package:distro_hopper/componentes/cartao_detalhes_distro.dart';
+import 'package:distro_hopper/componentes/controles_usuario.dart';
+import 'package:distro_hopper/componentes/formulario_teste.dart';
 import 'package:distro_hopper/gerenciador_estado.dart';
 import 'package:flutter/material.dart';
 
@@ -18,10 +20,21 @@ class Detalhes extends StatelessWidget {
         if (!didPop) estadoApp.exibirDistros();
       },
       child: Scaffold(
-        appBar: BarraApp(aoVoltar: estadoApp.exibirDistros),
+        appBar: BarraApp(
+          aoVoltar: estadoApp.exibirDistros,
+          acoes: const [ControlesUsuario()],
+        ),
         body: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(vertical: 8),
-          child: Column(children: [CartaoDetalhesDistro(distro: distro)]),
+          child: Column(
+            children: [
+              CartaoDetalhesDistro(distro: distro),
+              FormularioTeste(
+                key: ValueKey('${distro.id}-${estadoApp.logado}'),
+                distro: distro,
+              ),
+            ],
+          ),
         ),
       ),
     );

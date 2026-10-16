@@ -30,6 +30,12 @@ class CartaoDistro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final teste = estadoApp.logado ? estadoApp.testeDaDistro(distro.id) : null;
+    final quantidade =
+        estadoApp.logado ? estadoApp.testesDaDistro(distro.id).length : 0;
+    final resumo = teste == null
+        ? ''
+        : '${teste.nota > 0 ? 'Testada · nota ${teste.nota}/5' : 'Testada'}'
+              '${quantidade > 1 ? ' · $quantidade testes' : ''}';
 
     return Card(
       child: InkWell(
@@ -54,7 +60,7 @@ class CartaoDistro extends StatelessWidget {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      'Base: ${distro.base} · ${distro.ambiente}',
+                      'Base: ${distro.base} · Desde ${distro.ano}',
                       style: const TextStyle(color: CoresTux.cinza),
                     ),
                     if (teste != null) ...[
@@ -68,9 +74,7 @@ class CartaoDistro extends StatelessWidget {
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            teste.nota > 0
-                                ? 'Testada · nota ${teste.nota}/5'
-                                : 'Testada',
+                            resumo,
                             style: const TextStyle(
                               fontWeight: FontWeight.w600,
                               color: CoresTux.laranjaEscuro,

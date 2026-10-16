@@ -16,7 +16,7 @@
             "nome": "Debian",
             "descricao": "Um dos projetos mais antigos e respeitados do Linux, mantido por uma comunidade de voluntários. Conhecida pela estabilidade e pelo enorme repositório de pacotes. Serve de base para muitas outras distros.",
             "base": "Independente",
-            "ambiente": "GNOME",
+            "ambiente": "GNOME - KDE - MATE",
             "ano": 1993,
             "site": "https://www.debian.org/",
             "logo": "debian.png",

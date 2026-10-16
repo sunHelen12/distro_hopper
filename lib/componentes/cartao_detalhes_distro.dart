@@ -4,7 +4,6 @@ import 'package:distro_hopper/tema.dart';
 import 'package:flutter/material.dart';
 import 'package:page_view_dot_indicator/page_view_dot_indicator.dart';
 
-/// Bloco com as informações da distro: capturas de tela, dados e descrição.
 class CartaoDetalhesDistro extends StatefulWidget {
   final Distro distro;
 
@@ -87,7 +86,6 @@ class _CartaoDetalhesDistroState extends State<CartaoDetalhesDistro> {
                   runSpacing: 4,
                   children: [
                     Chip(label: Text('Base: ${distro.base}')),
-                    Chip(label: Text(distro.ambiente)),
                     Chip(label: Text('Desde ${distro.ano}')),
                   ],
                 ),

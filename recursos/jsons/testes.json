@@ -5,6 +5,8 @@
             "idDistro": 1,
             "nota": 4,
             "comentario": "Instalação rápida e tudo funcionou de primeira, inclusive o Wi-Fi. Achei o GNOME um pouco pesado no meu notebook antigo, mas no geral é ótima para quem está começando.",
+            "ambiente": "GNOME",
+            "versao": "24.04 LTS",
             "data": "2026-08-15T14:30:00-0300"
         },
         {
@@ -12,6 +14,8 @@
             "idDistro": 4,
             "nota": 5,
             "comentario": "Foi a mais fácil de usar até agora. O Cinnamon lembra bastante o Windows e os codecs já vêm instalados. Pretendo deixar como sistema principal.",
+            "ambiente": "Cinnamon",
+            "versao": "22",
             "data": "2026-09-02T20:10:00-0300"
         },
         {
@@ -19,6 +23,8 @@
             "idDistro": 5,
             "nota": 3,
             "comentario": "Aprendi muito seguindo a Arch Wiki, mas demorei bastante para chegar a um sistema usável. Vale a experiência, só não para quem tem pressa.",
+            "ambiente": "KDE Plasma",
+            "versao": "Rolling release",
             "data": "2026-09-20T09:45:00-0300"
         }
     ]
